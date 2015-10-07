@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/py/gov/hacienda/digital/doc/CampoTipoValor.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/DocumentoElectronico.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/DocumentoFirmaDigitalEndPoint.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/DocumentoFirmaDigitalService.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/DocumentoFirmaDigitalServiceLocator.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/DocumentoFirmaDigitalServiceSoapBindingStub.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/GuardarPdfFirmado.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/GuardarPdfFirmadoResponse.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/ObtenerPdfParaFirma.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/ObtenerPdfParaFirmaResponse.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/ObtenerPdfParaValidar.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/ObtenerPdfParaValidarResponse.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/ResultOperacion.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/TipoDato.java=UTF-8
+encoding//src/py/gov/hacienda/digital/doc/WsException.java=UTF-8
