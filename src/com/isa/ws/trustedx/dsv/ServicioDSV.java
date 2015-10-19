@@ -57,7 +57,7 @@ public class ServicioDSV {
     		SmartSignatureResult signatureResponse = iresp.getSignature(i);
     		Signature signature = new Signature();
     		signature.setFecha( signatureResponse.getSigningTime() );
-    		signature.setSinger(UtilesSWHelper.getCN(signatureResponse.getSignerIdentity()));
+    		signature.setCn(UtilesSWHelper.getCN(signatureResponse.getSignerIdentity()));
     		signature.setVerify(UtilesSWHelper.verifySmartSignature(signatureResponse));
     		
     		arrsing[i] = signature;

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Signature {
 
-	private String singer;
+	private String cn;
 	private Date fecha;
 	private boolean verify;
 	
@@ -15,11 +15,11 @@ public class Signature {
 	public void setVerify(boolean verify) {
 		this.verify = verify;
 	}
-	public String getSinger() {
-		return singer;
+	public String getCn() {
+		return cn;
 	}
-	public void setSinger(String singer) {
-		this.singer = singer;
+	public void setCn(String cn) {
+		this.cn = cn;
 	}
 	public Date getFecha() {
 		return fecha;

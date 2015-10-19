@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.xml.rpc.ServiceException;
-import javax.xml.ws.BindingProvider;
 
 import py.gov.hacienda.digital.doc.DocumentoFirmaDigitalEndPoint;
 import py.gov.hacienda.digital.doc.DocumentoFirmaDigitalService;
-import py.gov.hacienda.digital.doc.DocumentoFirmaDigitalServiceLocator;
+
 
 public class UtilesWs {
 
@@ -21,8 +20,8 @@ public class UtilesWs {
     	
         if (port == null){
             URL wsdllocation = new URL(UtilesResources.getProperty(UtilesResources.PROP_WS_ENDPOINT));
-            DocumentoFirmaDigitalService serviceRes = new DocumentoFirmaDigitalServiceLocator( );
-            port = serviceRes.getDocumentoFirmaDigitalEndPointPort(wsdllocation);
+            DocumentoFirmaDigitalService serviceRes = new DocumentoFirmaDigitalService(wsdllocation);
+            port = serviceRes.getDocumentoFirmaDigitalEndPointPort();// getDocumentoFirmaDigitalEndPointPort(wsdllocation);
 //          BindingProvider bindingProvider = (BindingProvider) port; 
 //          bindingProvider.getRequestContext().put( BindingProvider.ENDPOINT_ADDRESS_PROPERTY, UtilesResources.getProperty(UtilesResources.PROP_WS_ENDPOINT) );
             if (UtilesResources.TRUE_VALUE.equals(UtilesResources.getProperty(UtilesResources.PROP_WS_AUTH))){

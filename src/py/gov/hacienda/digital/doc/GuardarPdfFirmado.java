@@ -1,157 +1,117 @@
-/**
- * GuardarPdfFirmado.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package py.gov.hacienda.digital.doc;
 
-public class GuardarPdfFirmado  implements java.io.Serializable {
-    private py.gov.hacienda.digital.doc.DocumentoElectronico postFirmado;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-    private java.lang.String cedulaFirmante;
 
-    public GuardarPdfFirmado() {
-    }
+/**
+ * <p>Java class for guardarPdfFirmado complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="guardarPdfFirmado">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="postFirmado" type="{http://doc.digital.hacienda.gov.py/}documentoElectronico" minOccurs="0"/>
+ *         &lt;element name="cedulaFirmante" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="fechaFirmaCliente" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "guardarPdfFirmado", propOrder = {
+    "postFirmado",
+    "cedulaFirmante",
+    "fechaFirmaCliente"
+})
+public class GuardarPdfFirmado {
 
-    public GuardarPdfFirmado(
-           py.gov.hacienda.digital.doc.DocumentoElectronico postFirmado,
-           java.lang.String cedulaFirmante) {
-           this.postFirmado = postFirmado;
-           this.cedulaFirmante = cedulaFirmante;
-    }
-
+    protected DocumentoElectronico postFirmado;
+    protected String cedulaFirmante;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaFirmaCliente;
 
     /**
-     * Gets the postFirmado value for this GuardarPdfFirmado.
+     * Gets the value of the postFirmado property.
      * 
-     * @return postFirmado
+     * @return
+     *     possible object is
+     *     {@link DocumentoElectronico }
+     *     
      */
-    public py.gov.hacienda.digital.doc.DocumentoElectronico getPostFirmado() {
+    public DocumentoElectronico getPostFirmado() {
         return postFirmado;
     }
 
-
     /**
-     * Sets the postFirmado value for this GuardarPdfFirmado.
+     * Sets the value of the postFirmado property.
      * 
-     * @param postFirmado
+     * @param value
+     *     allowed object is
+     *     {@link DocumentoElectronico }
+     *     
      */
-    public void setPostFirmado(py.gov.hacienda.digital.doc.DocumentoElectronico postFirmado) {
-        this.postFirmado = postFirmado;
+    public void setPostFirmado(DocumentoElectronico value) {
+        this.postFirmado = value;
     }
 
-
     /**
-     * Gets the cedulaFirmante value for this GuardarPdfFirmado.
+     * Gets the value of the cedulaFirmante property.
      * 
-     * @return cedulaFirmante
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getCedulaFirmante() {
+    public String getCedulaFirmante() {
         return cedulaFirmante;
     }
 
-
     /**
-     * Sets the cedulaFirmante value for this GuardarPdfFirmado.
+     * Sets the value of the cedulaFirmante property.
      * 
-     * @param cedulaFirmante
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setCedulaFirmante(java.lang.String cedulaFirmante) {
-        this.cedulaFirmante = cedulaFirmante;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof GuardarPdfFirmado)) return false;
-        GuardarPdfFirmado other = (GuardarPdfFirmado) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.postFirmado==null && other.getPostFirmado()==null) || 
-             (this.postFirmado!=null &&
-              this.postFirmado.equals(other.getPostFirmado()))) &&
-            ((this.cedulaFirmante==null && other.getCedulaFirmante()==null) || 
-             (this.cedulaFirmante!=null &&
-              this.cedulaFirmante.equals(other.getCedulaFirmante())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getPostFirmado() != null) {
-            _hashCode += getPostFirmado().hashCode();
-        }
-        if (getCedulaFirmante() != null) {
-            _hashCode += getCedulaFirmante().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(GuardarPdfFirmado.class, true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://doc.digital.hacienda.gov.py/", "guardarPdfFirmado"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("postFirmado");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "postFirmado"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://doc.digital.hacienda.gov.py/", "documentoElectronico"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("cedulaFirmante");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "cedulaFirmante"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
+    public void setCedulaFirmante(String value) {
+        this.cedulaFirmante = value;
     }
 
     /**
-     * Return type metadata object
+     * Gets the value of the fechaFirmaCliente property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
+    public XMLGregorianCalendar getFechaFirmaCliente() {
+        return fechaFirmaCliente;
     }
 
     /**
-     * Get Custom Serializer
+     * Sets the value of the fechaFirmaCliente property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+    public void setFechaFirmaCliente(XMLGregorianCalendar value) {
+        this.fechaFirmaCliente = value;
     }
 
 }
