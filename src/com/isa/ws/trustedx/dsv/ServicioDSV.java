@@ -1,5 +1,7 @@
 package com.isa.ws.trustedx.dsv;
 
+import java.io.IOException;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -17,6 +19,48 @@ import com.safelayer.trustedx.client.smartwrapper.SmartVerifyResponse;
 public class ServicioDSV {
 
 
+	/**
+	 * Servicio de verificación, con autenticación implícita.
+	 * */
+	public VerifyResponse verifySignedPdf (String dataSigned) throws WService_TXException{
+        try{
+            SmartVerifyRequest iReq = new SmartVerifyRequest( UtilesSWHelper.getURLTrustedX() );
+            iReq.setHeader( UtilesSWHelper.crearSmartHeader( UtilesSWHelper.getAdminUsuario(), UtilesSWHelper.getAdminPassword() ) );
+            iReq.setProfile(Constants.Profile.PDF);
+            iReq.setInputPdfBase64Data(dataSigned);
+
+            SmartVerifyResponse iResp = iReq.send();
+            
+            VerifyResponse verifyResponse = new VerifyResponse();
+            
+            if (UtilesSWHelper.RESULTMAJOR_SUCCESS_FIRMA.equals(iResp.getResultMajor()) && 
+                    (UtilesSWHelper.RESULTMINOR_SUCCESS_VERIFY.equals(iResp.getResultMinor()) ||
+                    UtilesSWHelper.RESULTMINOR_SUCCESS_VERIFY_MULTISIGN_PDF.equals(iResp.getResultMinor()))){
+            	System.out.println("FIRMAS VALIDAS");
+            	verifyResponse.setSignatures( getSignatures(iResp));
+            	verifyResponse.setValida(true);
+            }
+            else{
+            	System.out.println("FIRMAS NO VALIDAS");
+            	verifyResponse.setValida(false);
+            	verifyResponse.setSignatures( getSignatures(iResp));
+            }
+            return verifyResponse;
+        }  
+        catch(IOException ex){
+            Logger.getLogger(ServicioDSV.class.getName()).log(Level.ERROR, null, ex);
+            throw new WService_TXException("Error accediendo a archivos de configuración.", ex.getMessage(), ex.getCause());	
+        }
+        catch(Exception ex){
+            Logger.getLogger(ServicioDSV.class.getName()).log(Level.ERROR, null, ex);
+            throw new WService_TXException(UtilesMsg.ERROR_VALIDAR_FIRMA, ex.getMessage(), ex.getCause());                         
+        } 		
+	}
+	
+	/**
+	 * Servicio de verificación, con autenticación explícita.
+	 * 
+	 * */
     public VerifyResponse verifySignedPdf(String artifact, String dataSigned) throws WService_TXException {
         try{
             SmartVerifyRequest iReq = new SmartVerifyRequest( UtilesSWHelper.getURLTrustedX() );

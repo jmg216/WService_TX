@@ -21,7 +21,7 @@ public class UtilesWs {
         if (port == null){
             URL wsdllocation = new URL(UtilesResources.getProperty(UtilesResources.PROP_WS_ENDPOINT));
             DocumentoFirmaDigitalService serviceRes = new DocumentoFirmaDigitalService(wsdllocation);
-            port = serviceRes.getDocumentoFirmaDigitalEndPointPort();// getDocumentoFirmaDigitalEndPointPort(wsdllocation);
+            port = serviceRes.getDocumentoFirmaDigitalEndPointPort();
 //          BindingProvider bindingProvider = (BindingProvider) port; 
 //          bindingProvider.getRequestContext().put( BindingProvider.ENDPOINT_ADDRESS_PROPERTY, UtilesResources.getProperty(UtilesResources.PROP_WS_ENDPOINT) );
             if (UtilesResources.TRUE_VALUE.equals(UtilesResources.getProperty(UtilesResources.PROP_WS_AUTH))){

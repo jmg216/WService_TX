@@ -23,7 +23,6 @@ import com.isa.ws.entities.TipoDatoTx;
 import com.isa.ws.entities.VerifyResponse;
 import com.isa.ws.exceptions.WService_TXException;
 import com.isa.ws.trustedx.facade.FacadeServicesTX;
-import com.isa.ws.utiles.UtilesSWHelper;
 import com.isa.ws.utiles.UtilesWs;
 
 @WebService
@@ -63,12 +62,9 @@ public class VerificarDocumentoPDF {
 					campotipovalor.add( campotarget );
 				}
 			}
-			logger.error("init::obtenerPdfParaValidar");
+
 			DocumentoElectronico docElectronico = UtilesWs.getInstancePortWS().obtenerPdfParaValidar(tipoDocumento, campotipovalor);
-			logger.error("fin::obtenerPdfParaValidar");
 			
-			//init validación real
-			String artifact = FacadeServicesTX.getServicioAA().login( UtilesSWHelper.getAdminUsuario(), UtilesSWHelper.getAdminPassword() );
 			
 			DataHandler dh = docElectronico.getObjetoPdf();
 			ByteArrayOutputStream buffOS= new ByteArrayOutputStream();
@@ -77,9 +73,8 @@ public class VerificarDocumentoPDF {
 			
 			byte[] documento = Base64.encodeBase64( buff );
 			String dataSigned = new String( documento );
-			verifyResponse = FacadeServicesTX.getServicioDSV().verifySignedPdf(artifact, dataSigned);
-			FacadeServicesTX.getServicioAA().logut(UtilesSWHelper.getAdminUsuario(), artifact);
-				
+			verifyResponse = FacadeServicesTX.getServicioDSV().verifySignedPdf( dataSigned );
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			logger.error("ERROR: " + e.getMessage(), e);
@@ -107,19 +102,12 @@ public class VerificarDocumentoPDF {
 	@WebMethod
 	public VerifyResponse validarDocumentoByDoc(byte[] documento ) throws WService_TXException{
 		VerifyResponse verifyResponse = new VerifyResponse();
-		try{
-			logger.info("VerificarDocumentoPDF::validarDocumentoByDoc");
-			
-			String artifact = FacadeServicesTX.getServicioAA().login( UtilesSWHelper.getAdminUsuario(), UtilesSWHelper.getAdminPassword() );
-			String dataSigned = new String( documento );
-			verifyResponse = FacadeServicesTX.getServicioDSV().verifySignedPdf(artifact, dataSigned);
-			FacadeServicesTX.getServicioAA().logut(UtilesSWHelper.getAdminUsuario(), artifact);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-			logger.error("ERROR: " + e.getMessage());
-			throw new WService_TXException("Error accediendo a archivos de configuración.", e.getMessage(), e.getCause());		
-		}		
+
+		logger.info("VerificarDocumentoPDF::validarDocumentoByDoc");
+
+		String dataSigned = new String( documento );
+		verifyResponse = FacadeServicesTX.getServicioDSV().verifySignedPdf( dataSigned );
+		
 		return verifyResponse;		
 	}
 }
